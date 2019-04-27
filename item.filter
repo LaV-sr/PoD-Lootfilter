@@ -1,0 +1,543 @@
+﻿//////////////////////
+// LaV's Lootfilter //
+//////////////////////
+// up to date as of 2019-02-09
+// Basics: https://pathofdiablo.com/wiki/index.php?title=Loot_Filtration
+// Advanced: https://pathofdiablo.com/wiki/index.php?title=Loot_Filtration_Codes
+// Notepad++ Syntax: https://github.com/KarmaNation256/pod-loot-filter/wiki/Installing-Syntax-Highlights
+//////////////////////
+// Note: I kind of sped through this in the end, there's probably mistakes somewhere that I wont find until I use actually use it.
+//       If you want to be sure your filter does what you want or expect it to do: Don't use it.
+//////////////////////
+
+//ItemDisplay[7cr NMAG (SOCK=0 OR SOCK=6)]: %NAME% (%SOCKETS% s) %RED%Fireclaw Early // Phase Blade 0 or 6 Socket - Fireclaw Druid
+//ItemDisplay[CL1 NMAG SK239=3 SOCK=2]: %NAME% (%SOCKETS% s) %RED%Fireclaw Early // Fireclaw Lore Druid Base
+
+// Gold // Lvl <20 sees 100+, Lvl <70 sees 1000+, Lvl 70+ sees 5000+
+ItemDisplay[GOLD<100 CLVL<20]:
+ItemDisplay[GOLD<1000 (CLVL>19 AND CLVL<70)]:
+ItemDisplay[GOLD<5000 CLVL>69]:
+
+// Potions
+ItemDisplay[rvl]: %PURPLE%+Rejuv %WHITE%70%%PURPLE%+ 
+ItemDisplay[rvs]: %PURPLE%rej %WHITE%35%
+ItemDisplay[hp5]: %RED%!%WHITE%Health%RED%+
+ItemDisplay[hp4 CLVL<70]: %RED%!%WHITE%health
+ItemDisplay[hp4 CLVL>69]:
+ItemDisplay[mp5]: %BLUE%!%WHITE%Mana%BLUE%+
+ItemDisplay[mp4 CLVL<70]: %BLUE%!%WHITE%mana
+ItemDisplay[mp4 CLVL>69]:
+ItemDisplay[hp1 CLVL<20]: %RED%!%WHITE%Minor Heal
+ItemDisplay[hp1 CLVL>19]:
+ItemDisplay[hp2 CLVL<25]: %RED%!%WHITE%Light Heal
+ItemDisplay[hp2 CLVL>24]:
+ItemDisplay[hp3 CLVL<36]: %RED%!%WHITE%Healing
+ItemDisplay[hp3 CLVL>35]:
+ItemDisplay[mp1 CLVL<20]: %BLUE%!%WHITE%Minor Mana
+ItemDisplay[mp1 CLVL>19]:
+ItemDisplay[mp2 CLVL<25]: %BLUE%!%WHITE%Light Mana
+ItemDisplay[mp2 CLVL>24]:
+ItemDisplay[mp3 CLVL<36]: %BLUE%!%WHITE%Mana
+ItemDisplay[mp3 CLVL>35]:
+
+// Token & Ubers - Displayed more compact or w/ additional information
+ItemDisplay[tes]: %ORANGE%Suffering Essence %RED%[Andy] // Twisted Essence of Suffering
+ItemDisplay[ceh]: %ORANGE%Hatred Essence %RED%[Meph] // Charged Essence of Hatred
+ItemDisplay[bet]: %ORANGE%Terror Essence %RED%[Dia] // Burning Essence of Terror
+ItemDisplay[fed]: %ORANGE%Destruction Essence %RED%[Baal] // Festering Essence of Destruction
+ItemDisplay[toa]: %RED%Token of Absolution // Token of Absolution (Respec)
+
+ItemDisplay[pk1]: %ORANGE%Terror Key %RED%[A1]
+ItemDisplay[pk2]: %ORANGE%Hate Key %RED%[A2]
+ItemDisplay[pk3]: %ORANGE%Destruction Key %RED%[A5]
+ItemDisplay[dhn]: %ORANGE%Diablo's Horn %RED%[Lilith]
+ItemDisplay[bey]: %ORANGE%Baal's Eye %RED%[Duriel]
+ItemDisplay[mbr]: %ORANGE%Mephisto's Brain %RED%[Izual]
+
+// PoD Specific Items
+ItemDisplay[std]: %NAME% // Standard of Heroes (Full-Set Glow-Effect)
+ItemDisplay[cx5]: %PURPLE%%NAME% // Orb of Corruption
+ItemDisplay[cx6]: %PURPLE%%NAME% // (Diablo's Soulstone (Uber Diablo) - Drops from UT-Diablo
+ItemDisplay[cx7]: %RED%### %PURPLE%%NAME%%RED% ### // Key of Chaos (Uber Diablo) - Drops in Relics(Maps)
+ItemDisplay[cx8]: %RED% # %PURPLE%%NAME%%RED% # // Orb of Enchantment
+ItemDisplay[ma1]: %PURPLE%%NAME% // not in as of patch#15, removed in patch#12
+ItemDisplay[ma2]: %PURPLE%%NAME% %RED%[T4] // Tier 4 Relic
+ItemDisplay[ma3]: %PURPLE%%NAME% // not in as of patch#15, removed in patch#12
+ItemDisplay[ma4]: %PURPLE%%NAME% %RED%[T1] // Tier 1 Relic
+ItemDisplay[ma5]: %PURPLE%%NAME% %RED%[T2] // Tier 2 Relic
+ItemDisplay[ma6]: %PURPLE%%NAME% %RED%[T3] // Tier 3 Relic
+ItemDisplay[maz]: %PURPLE%%NAME% // not in as of patch#15
+ItemDisplay[cm4]: %PURPLE%%NAME% // Hoardrim Sigil (Enchant Charm)
+
+// Utility Items
+ItemDisplay[tbk]: %WHITE%Tome of Town Portal // TP Tome
+ItemDisplay[ibk]: %WHITE%Tome of Identify // ID Tome
+ItemDisplay[tsc]: %GREEN%!%WHITE%TP // TP Scroll, always displayed
+ItemDisplay[isc CLVL<30]: %GREEN%!%WHITE%ID // ID Scroll, hidden for high lvl char
+ItemDisplay[isc CLVL>29]:
+ItemDisplay[key]: Key // not in %DGREEN%
+ItemDisplay[ear]: %PURPLE%%NAME% // player ear (pvp)
+ItemDisplay[leg]: %PURPLE%%NAME% // wirt's leg
+
+// Elixirs
+ItemDisplay[wms CLVL<60]: %GREEN%!%WHITE%AntiFreeze
+ItemDisplay[wms CLVL>59]:
+ItemDisplay[yps CLVL<100]: %GREEN%!%WHITE%Antidote
+ItemDisplay[yps CLVL>99]:
+ItemDisplay[vps CLVL<60]: %GREEN%!%WHITE%Stamina
+ItemDisplay[vps CLVL>59]:
+
+//Choking, Exploding, Fulminating, Oil, Rancid, Strangling
+// only show them very early on (as gold source) 
+ItemDisplay[gps CLVL<10]: %NAME%
+ItemDisplay[gpm CLVL<10]: %NAME%
+ItemDisplay[gpl CLVL<10]: %NAME%
+ItemDisplay[ops CLVL<10]: %NAME%
+ItemDisplay[opm CLVL<10]: %NAME%
+ItemDisplay[opl CLVL<10]: %NAME%
+ItemDisplay[gps CLVL>9]:
+ItemDisplay[gpm CLVL>9]:
+ItemDisplay[gpl CLVL>9]:
+ItemDisplay[ops CLVL>9]:
+ItemDisplay[opm CLVL>9]:
+ItemDisplay[opl CLVL>9]:
+
+// Runes
+ItemDisplay[r01]: %ORANGE%%RUNENAME% Rune [1] // EL
+ItemDisplay[r02]: %ORANGE%%RUNENAME% Rune [2] // ELD
+ItemDisplay[r03]: %ORANGE%%RUNENAME% Rune [3] // TIR
+ItemDisplay[r04]: %ORANGE%%RUNENAME% Rune [4] // NEF
+ItemDisplay[r05]: %ORANGE%%RUNENAME% Rune [5] // ETH
+ItemDisplay[r06]: %ORANGE%%RUNENAME% Rune [6] // ITH 
+ItemDisplay[r07]: %ORANGE%%RUNENAME% Rune [7] // TAL
+ItemDisplay[r08]: %ORANGE%%RUNENAME% Rune [8] // RAL
+ItemDisplay[r09]: %ORANGE%%RUNENAME% Rune [9] // ORT
+ItemDisplay[r10]: %ORANGE%%RUNENAME% Rune [10] // THUL
+ItemDisplay[r11]: %ORANGE%%RUNENAME% Rune [11] // AMN
+ItemDisplay[r12]: %ORANGE%%RUNENAME% Rune [12] // SOL
+ItemDisplay[r13]: %ORANGE%%RUNENAME% Rune [13] // SHAEL
+ItemDisplay[r14]: %ORANGE%%RUNENAME% Rune [14] // DOL
+ItemDisplay[r15]: %ORANGE%%RUNENAME% Rune [15] // HEL
+ItemDisplay[r16]: %ORANGE%%RUNENAME% Rune [16] // IO
+ItemDisplay[r17]: %ORANGE%%RUNENAME% Rune [17] // LUM
+ItemDisplay[r18]: %ORANGE%%RUNENAME% Rune [18] // KO
+ItemDisplay[r19]: %ORANGE%%RUNENAME% Rune [19] // FAL
+ItemDisplay[r20]: %RED%### %ORANGE%%RUNENAME% Rune [20] %RED%### // LEM
+ItemDisplay[r21]: %RED%### %ORANGE%%RUNENAME% Rune [21] %RED%### // PUL
+ItemDisplay[r22]: %RED%### %ORANGE%%RUNENAME% Rune [22] %RED%### // UM 
+ItemDisplay[r23]: %RED%### %ORANGE%%RUNENAME% Rune [23] %RED%### // MAL
+ItemDisplay[r24]: %RED%### %ORANGE%%RUNENAME% Rune [24] %RED%### // IST
+ItemDisplay[r25]: %RED%### %ORANGE%%RUNENAME% Rune [25] %RED%### // GUL
+ItemDisplay[r26]: %GREEN%[%RED%#%PURPLE%#%RED%#%GREEN%] %ORANGE%%RUNENAME% Rune [26] %GREEN%[%RED%#%PURPLE%#%RED%#%GREEN%]  // VEX
+ItemDisplay[r27]: %GREEN%[%RED%#%PURPLE%#%RED%#%GREEN%] %ORANGE%%RUNENAME% Rune [27] %GREEN%[%RED%#%PURPLE%#%RED%#%GREEN%]  // OHM
+ItemDisplay[r28]: %GREEN%[%RED%#%PURPLE%#%RED%#%GREEN%] %ORANGE%%RUNENAME% Rune [28] %GREEN%[%RED%#%PURPLE%#%RED%#%GREEN%]  // LO
+ItemDisplay[r29]: %GREEN%[%RED%#%PURPLE%#%RED%#%GREEN%] %ORANGE%%RUNENAME% Rune [29] %GREEN%[%RED%#%PURPLE%#%RED%#%GREEN%]  // SUR
+ItemDisplay[r30]: %GREEN%[%RED%#%PURPLE%#%RED%#%GREEN%] %ORANGE%%RUNENAME% Rune [30] %GREEN%[%RED%#%PURPLE%#%RED%#%GREEN%]  // BER
+ItemDisplay[r31]: %GREEN%[%RED%#%PURPLE%#%RED%#%GREEN%] %ORANGE%%RUNENAME% Rune [31] %GREEN%[%RED%#%PURPLE%#%RED%#%GREEN%]  // JAH
+ItemDisplay[r32]: %GREEN%[%RED%#%PURPLE%#%RED%#%GREEN%] %ORANGE%%RUNENAME% Rune [32] %GREEN%[%RED%#%PURPLE%#%RED%#%GREEN%]  // CHAM
+ItemDisplay[r33]: %GREEN%[%RED%#%PURPLE%#%RED%#%GREEN%] %ORANGE%%RUNENAME% Rune [33] %GREEN%[%RED%#%PURPLE%#%RED%#%GREEN%]  // ZOD
+
+
+// Gems // v = violet amethyst, w = white diamond, g = green emerald, r = red ruby, b = blue sapphire, y = yellow topaz, sk = skull
+//chipped (Tier 1)
+ItemDisplay[gcv CLVL>20]:
+ItemDisplay[gcv CLVL<21]: chipped amethyst
+ItemDisplay[gcw CLVL>20]:
+ItemDisplay[gcw CLVL<21]: chipped diamond
+ItemDisplay[gcg CLVL>20]:
+ItemDisplay[gcg CLVL<21]: chipped emerald
+ItemDisplay[gcr CLVL>20]:
+ItemDisplay[gcr CLVL<21]: chipped ruby
+ItemDisplay[gcb CLVL>20]:
+ItemDisplay[gcb CLVL<21]: chipped sapphire
+ItemDisplay[gcy CLVL>20]:
+ItemDisplay[gcy CLVL<21]: chipped topaz
+ItemDisplay[skc CLVL>20]:
+ItemDisplay[skc CLVL<21]: chipped skull
+//flawed (Tier2)
+ItemDisplay[gfv CLVL>20]:
+ItemDisplay[gfv CLVL<21]: flawed amethyst
+ItemDisplay[gfw CLVL>20]:
+ItemDisplay[gfw CLVL<21]: flawed diamond
+ItemDisplay[gfg CLVL>20]:
+ItemDisplay[gfg CLVL<21]: flawed emerald
+ItemDisplay[gfr CLVL>20]:
+ItemDisplay[gfr CLVL<21]: flawed ruby
+ItemDisplay[gfb CLVL>20]:
+ItemDisplay[gfb CLVL<21]: flawed sapphire
+ItemDisplay[gfy CLVL>20]:
+ItemDisplay[gfy CLVL<21]: flawed topaz
+ItemDisplay[skf CLVL>20]:
+ItemDisplay[skf CLVL<21]: flawed skull
+//normal (Tier3) // displayed longer for crafting full rejuvs / resist shields (diamond)
+ItemDisplay[gsv CLVL>70]:
+ItemDisplay[gsv CLVL<71]: amethyst
+ItemDisplay[gsw CLVL>80]:
+ItemDisplay[gsw CLVL<81]: diamond // res shields are good early on
+ItemDisplay[gsg CLVL>70]:
+ItemDisplay[gsg CLVL<71]: emerald
+ItemDisplay[gsr CLVL>70]:
+ItemDisplay[gsr CLVL<71]: ruby
+ItemDisplay[gsb CLVL>70]:
+ItemDisplay[gsb CLVL<71]: sapphire
+ItemDisplay[gsy CLVL>70]:
+ItemDisplay[gsy CLVL<71]: topaz
+ItemDisplay[sku CLVL>70]:
+ItemDisplay[sku CLVL<71]: skull
+//Flawless (Tier4)
+ItemDisplay[gzv]: %ORANGE%Flawless Amethyst
+ItemDisplay[glw]: %ORANGE%Flawless Diamond
+ItemDisplay[glg]: %ORANGE%Flawless Emerald
+ItemDisplay[glr]: %ORANGE%Flawless Ruby
+ItemDisplay[glb]: %ORANGE%Flawless Sapphire
+ItemDisplay[gly]: %ORANGE%Flawless Topaz
+ItemDisplay[skl]: %ORANGE%Flawless Skull
+//PERFECT (Tier5)
+ItemDisplay[gpv]: %ORANGE%PERFECT AMETHYST
+ItemDisplay[gpw]: %ORANGE%PERFECT DIAMOND
+ItemDisplay[gpg]: %ORANGE%PERFECT EMERALD
+ItemDisplay[gpr]: %ORANGE%PERFECT RUBY
+ItemDisplay[gpb]: %ORANGE%PERFECT SAPPHIRE
+ItemDisplay[gpy]: %ORANGE%PERFECT TOPAZ
+ItemDisplay[skz]: %ORANGE%PERFECT SKULL
+
+//
+// From here on: Actual Items
+//
+
+
+// Small things worth grabbing - Unique/Rare Ring/Amu/Jewel, Set Amu, 
+ItemDisplay[!ID UNI rin]: %ORANGE%##### %GOLD%%NAME% %ORANGE%#####
+ItemDisplay[!ID UNI amu]: %ORANGE%##### %GOLD%%NAME% %ORANGE%#####
+ItemDisplay[!ID UNI jew]: %ORANGE%##### %GOLD%%NAME% %ORANGE%#####
+ItemDisplay[!ID SET amu]: %ORANGE%##### %GREEN%%NAME% %ORANGE%#####
+ItemDisplay[!ID RARE rin]: %GREEN%##### %YELLOW%%NAME% %GREEN%#####
+ItemDisplay[!ID RARE amu]: %GREEN%##### %YELLOW%%NAME% %GREEN%#####
+ItemDisplay[!ID RARE jew]: %GREEN%##### %YELLOW%%NAME% %GREEN%#####
+
+// Jewelry - (Magic) Display (with iLvl for crafting)
+ItemDisplay[jew !ID MAG]: %GREEN%### %BLUE%%NAME% %GREEN%###
+ItemDisplay[jew ID MAG]: %NAME%
+ItemDisplay[rin MAG]: %NAME% (L%ILVL%)
+ItemDisplay[amu MAG]: %NAME% (L%ILVL%)
+
+// Charms - Display a bit larger for easy grabbing and with iLvl
+ItemDisplay[cm1 !ID MAG]: %GREEN%### %BLUE%%NAME% (L%ILVL%) %GREEN%###
+ItemDisplay[cm2 !ID MAG]: %GREEN%### %BLUE%%NAME% (L%ILVL%) %GREEN%###
+ItemDisplay[cm3 !ID MAG]: %GREEN%### %BLUE%%NAME% (L%ILVL%) %GREEN%###
+ItemDisplay[cm1 ID MAG]: %NAME% (L%ILVL%)
+ItemDisplay[cm2 ID MAG]: %NAME% (L%ILVL%)
+ItemDisplay[cm3 ID MAG]: %NAME% (L%ILVL%)
+
+// Shopping - IDK why i'm even bothering with that...
+// Shopping Claws (Filtergale)
+ItemDisplay[MAG CL5 (CLSK6>0 AND SK271=3)]: %RED%##### %PURPLE%LIGHT CLAW%RED% #####
+ItemDisplay[MAG CL5 (CLSK6>1 AND SK271>1)]: %RED%##### %PURPLE%LIGHT CLAW%RED% #####
+ItemDisplay[MAG CL5 (TABSK48>0 AND SK271=3)]: %RED%##### %PURPLE%LIGHT CLAW%RED% #####
+ItemDisplay[MAG CL5 (TABSK48>1 AND SK271>1)]: %RED%##### %PURPLE%LIGHT CLAW%RED% #####
+ItemDisplay[MAG CL5 (CLSK6>0 AND SK262=3)]: %RED%##### %PURPLE%FIRE CLAW%RED% #####
+ItemDisplay[MAG CL5 (CLSK6>1 AND SK262>1)]: %RED%##### %PURPLE%FIRE CLAW%RED% #####
+ItemDisplay[MAG CL5 (TABSK48>0 AND SK262=3)]: %RED%##### %PURPLE%FIRE CLAW%RED% #####
+ItemDisplay[MAG CL5 (TABSK48>1 AND SK262>1)]: %RED%##### %PURPLE%FIRE CLAW%RED% #####
+ItemDisplay[MAG CL5 (CLSK6>0 AND SK272=3)]: %RED%##### %PURPLE%FIRE CLAW%RED% #####
+ItemDisplay[MAG CL5 (CLSK6>1 AND SK272>1)]: %RED%##### %PURPLE%FIRE CLAW%RED% #####
+ItemDisplay[MAG CL5 (TABSK48>0 AND SK272=3)]: %RED%##### %PURPLE%FIRE CLAW%RED% #####
+ItemDisplay[MAG CL5 (TABSK48>1 AND SK272>1)]: %RED%##### %PURPLE%FIRE CLAW%RED% #####
+ItemDisplay[MAG CL5 (CLSK6>0 AND SK277=3)]: %RED%##### %PURPLE%BLADESHIELD CLAW%RED% #####
+ItemDisplay[MAG CL5 (CLSK6>1 AND SK277>1)]: %RED%##### %PURPLE%BLADESHIELD CLAW%RED% #####
+ItemDisplay[MAG CL5 (TABSK48>0 AND SK277=3)]: %RED%##### %PURPLE%BLADESHIELD CLAW%RED% #####
+ItemDisplay[MAG CL5 (TABSK48>1 AND SK277>1)]: %RED%##### %PURPLE%BLADESHIELD CLAW%RED% #####
+ItemDisplay[MAG CL5 (CLSK6>0 AND SK278=3)]: %RED%##### %PURPLE%VENOM CLAW%RED% #####
+ItemDisplay[MAG CL5 (CLSK6>1 AND SK278>1)]: %RED%##### %PURPLE%VENOM CLAW%RED% #####
+ItemDisplay[MAG CL5 (TABSK49>0 AND SK278=3)]: %RED%##### %PURPLE%VENOM CLAW%RED% #####
+ItemDisplay[MAG CL5 (TABSK49>1 AND SK278>1)]: %RED%##### %PURPLE%VENOM CLAW%RED% #####
+
+// Shopping (Filtergale) -- TODO: 30/20 30@res shields? 27+ish? playthrough res items?
+ItemDisplay[MAG WP5 ID TABSK34=3]: %RED%##### %PURPLE%BO STICK%RED% #####
+ItemDisplay[MAG CL5 ID TABSK48=3]: %RED%##### %PURPLE%TRAP CLAW%RED% #####
+ItemDisplay[MAG EQ4 !ETH ID TABSK0=3 IAS=20]: %RED%##### %PURPLE%BOW GLOVE%RED% #####
+ItemDisplay[MAG EQ4 !ETH ID TABSK2=3 IAS=20]: %RED%##### %PURPLE%JAVA GLOVE%RED% #####
+ItemDisplay[MAG WP13(TABSK24=3 AND SK121=3)]: %RED%##### %PURPLE%FOH WEP%RED% #####
+ItemDisplay[MAG WP13(TABSK25=3 AND SK119=3)]: %RED%##### %PURPLE%SANC AURA WEP%RED% #####
+
+// Catch all Uniques, Sets, Crafts, Rares and RWs and Display them with some details. No spoilers, special characters, just eth status and sockets
+ItemDisplay[UNI ETH SOCK>0]: ETH %NAME% (%SOCKETS% s)
+ItemDisplay[UNI ETH]: ETH %NAME%
+ItemDisplay[UNI SOCK>0]: %NAME% (%SOCKETS% s)
+ItemDisplay[UNI]: %NAME%
+ItemDisplay[SET ETH SOCK>0]: ETH %NAME% (%SOCKETS% s)
+ItemDisplay[SET ETH]: ETH %NAME%
+ItemDisplay[SET SOCK>0]: %NAME% (%SOCKETS% s)
+ItemDisplay[SET]: %NAME%
+ItemDisplay[ID (!UNI AND !SET AND !RARE AND !MAG AND !NMAG AND !RW) SOCK>0]: %NAME% (%SOCKETS% s)
+ItemDisplay[ID (!UNI AND !SET AND !RARE AND !MAG AND !NMAG AND !RW)]: %NAME%
+ItemDisplay[RARE ETH SOCK>0]: ETH %NAME% (%SOCKETS% s)
+ItemDisplay[RARE ETH]: ETH %NAME%
+ItemDisplay[RARE SOCK>0]: %NAME% (%SOCKETS% s)
+ItemDisplay[RARE]: %NAME%
+ItemDisplay[MAG ID ETH SOCK>0]: ETH %NAME% (%SOCKETS% s)
+ItemDisplay[MAG ID ETH]: ETH %NAME%
+ItemDisplay[MAG ID SOCK>0]: %NAME% (%SOCKETS% s)
+ItemDisplay[MAG ID]: %NAME%
+ItemDisplay[RW]: %NAME%  //Runewords - displays all runewords even if the base item would be hidden
+
+// Arrows and Bolts - hide whites, show magics on low lvl only, rares, sets, uniques are shown by default anyway
+ItemDisplay[(aq2 OR cq2) NMAG]:
+// ItemDisplay[aq2 MAG]: %NAME% // (for bowas)
+ItemDisplay[(aq2 OR cq2) MAG ILVL<31]: %NAME%
+ItemDisplay[(aq2 OR cq2) MAG ILVL>30]:
+ItemDisplay[(aqv OR cqv) NMAG]: // hide "old" arrows/bolts
+
+// Gloves (EQ4) - Only show eth/noneth rares, magic unids only till level 60, show idented stuff always though - idented magics & rares get displayed by catchall above
+ItemDisplay[EQ4 NMAG]:
+ItemDisplay[EQ4 MAG !ETH !ID CLVL>60]: // hide magic unid gloves at level 61+
+ItemDisplay[EQ4 MAG !ETH !ID CLVL<61]: %NAME% // show magic unid gloves at level <61
+ItemDisplay[EQ4 MAG ETH !ID]: // hide eth magic unid gloves
+
+// Belts (EQ6) - Only display normal belts on low level, magics till 60, always show rares - idented magics & rares get displayed by catchall above
+ItemDisplay[EQ6 NMAG CLVL>20]:
+ItemDisplay[EQ6 MAG !ETH !ID CLVL>60]: // hide magic unid belts at level 61+
+ItemDisplay[EQ6 MAG !ETH !ID CLVL<61]: %NAME% // show magic unid belts at level <61
+ItemDisplay[EQ6 MAG ETH !ID]: // hide eth magic unid belts
+
+// Boots (EQ5) - do not display normal boots, only display noneth magics till level 60 - idented magics & rares get displayed by catchall above
+ItemDisplay[EQ5 NMAG]: 
+ItemDisplay[EQ5 MAG !ETH !ID CLVL>60]: // hide magic unid boots at level 61+
+ItemDisplay[EQ5 MAG !ETH !ID CLVL<61]: %NAME% // show magic unid boots at level <61
+ItemDisplay[EQ5 MAG ETH !ID]: // hide eth magic unid boots
+
+// Helmets (EQ1) + Circlets (EQ7) + Barb Helmets (CL2) + Druid Helmets (CL1)
+// Helmets (EQ1)
+ItemDisplay[msk NMAG !ETH SOCK=0 ILVL>40 CLVL<60]: %NAME% (%SOCKETS% s) // mask 0/3s
+ItemDisplay[msk NMAG !ETH SOCK=3 CLVL<80]: %NAME% (%SOCKETS% s) // mask 3s
+ItemDisplay[xsk NMAG !ETH SOCK=3 CLVL<80]: %NAME% (%SOCKETS% s) // 3s death mask - 55str req
+ItemDisplay[crn NMAG !ETH SOCK=3 CLVL<80]: %NAME% (%SOCKETS% s) // 3s crown - 55str req
+ItemDisplay[usk NMAG !ETH SOCK=3  CLVL<80]: %NAME% (%SOCKETS% s) // 3s demon head 102 str req
+ItemDisplay[uh9 NMAG !ETH SOCK=3  CLVL<98]: %NAME% (%SOCKETS% s) // 3s bone visage 106 str req
+ItemDisplay[EQ1 NMAG !ETH SOCK=2 CLVL<30]: %NAME% (%SOCKETS% s) // 2s helm, early game resist or lore base
+
+// Circlets (EQ7)
+ItemDisplay[(ci2 OR ci3) NMAG !ETH (SOCK=0 OR SOCK=3)]: %NAME% (%SOCKETS% s) // show imbue or dream base, tiara and diadem (can have 3s)
+ItemDisplay[EQ7 !ETH MAG]: %NAME% // show all noneth magic circs
+ItemDisplay[EQ7 ETH MAG]: ETH %NAME% // show all eth magic circs
+
+// Druid Helmets (CL1)
+ItemDisplay[CL1 NMAG !ETH SK247=2 !SOCK=1 CLVL<90]: %NAME% (%SOCKETS% s) %RED%Grizzly // +2 - early
+ItemDisplay[CL1 NMAG !ETH SK244=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Volcano
+ItemDisplay[CL1 NMAG !ETH SK249=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Armaeddon
+ItemDisplay[CL1 NMAG !ETH SK250=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Hurricane
+ItemDisplay[CL1 NMAG !ETH SK240=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Twister
+ItemDisplay[CL1 NMAG !ETH SK245=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Tornado
+ItemDisplay[CL1 NMAG !ETH SK237=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Dire Wolf
+ItemDisplay[CL1 NMAG !ETH SK247=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Grizzly
+ItemDisplay[CL1 NMAG !ETH SK227=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Spirit Wolf
+ItemDisplay[CL1 NMAG !ETH SK243=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Shockwave
+ItemDisplay[CL1 NMAG !ETH SK238=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Rabies
+ItemDisplay[CL1 NMAG !ETH SK239=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Fireclaw
+ItemDisplay[CL1 MAG !ETH]: %NAME% // show magic druid helmets
+
+// Barb Helmets (CL2)
+ItemDisplay[CL2 NMAG !ETH SK154=2 !SOCK=1 CLVL<80]: %NAME% (%SOCKETS% s) %RED% 2Warcry // +2 - early
+ItemDisplay[CL2 NMAG !ETH SK149=2 !SOCK=1 CLVL<80]: %NAME% (%SOCKETS% s) %RED% 2BO // +2 - early
+ItemDisplay[CL2 NMAG !ETH SK154=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED% Warcry
+ItemDisplay[CL2 NMAG !ETH SK149=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED% BO
+ItemDisplay[CL2 NMAG !ETH SK153=3 !SOCK=1 CLVL<85]: %NAME% (%SOCKETS% s) %RED%Nat Res
+ItemDisplay[CL2 NMAG !ETH SK150=3 !SOCK=1 CLVL<85]: %NAME% (%SOCKETS% s) %RED%Grim Ward
+ItemDisplay[CL2 NMAG !ETH SK142=3 !SOCK=1 CLVL<85]: %NAME% (%SOCKETS% s) %RED%Find Item
+ItemDisplay[CL2 NMAG !ETH SK138=3 !SOCK=1 CLVL<85]: %NAME% (%SOCKETS% s) %RED%Shout
+ItemDisplay[CL2 MAG !ETH !ID]: %NAME% // show magic noneth barb helmets, possible +6bo
+
+// hide helm stuff (all below the specific helmet stuff; for some reason circs and class specific helmets count as helmet in general so that goes last
+ItemDisplay[EQ7 NMAG]: // hide all other (non-magical) circs
+ItemDisplay[CL2 NMAG]: bar hat ignore // hide non-magicsl barb helmets that are not explicitely shown //TEMPIGNORE
+ItemDisplay[CL1 MAG !ID ETH CLVL>20]: // hide ethereal unid magic druid helmets at level 20+
+ItemDisplay[CL1 NMAG CLVL>20]: dru hat ignore // hide non-magical druid helms at level 20+  //TEMPIGNORE
+ItemDisplay[EQ1 MAG CLVL>40]: // hide magical helmets above level 20 as they, too, are shit in PoD 
+ItemDisplay[EQ1 NMAG CLVL>20]: // hide non-magical helmets that are not explicitely displayed, Lore-Bases are shoppale in Act 1+2 Norm
+
+// Armors (EQ2)
+ItemDisplay[(qui OR lea OR hla OR stu OR brs OR ltp) NMAG SOCK>1 !ETH CLVL<75]: %NAME% (%SOCKETS% s) // displays noneth light normal armors with 2 and 3 sockets till level 75
+ItemDisplay[(xui OR xea OR xla OR xtu OR xrs OR xtp) NMAG SOCK>1 !ETH CLVL<75]: %NAME% (%SOCKETS% s) // displays noneth light exceptional armors with 2 and 3 sockets till level 75
+ItemDisplay[(uui OR uea OR ula OR utu OR urs OR utp) NMAG SOCK=0 !ETH CLVL<90]: %NAME% // displays light noneth elite armors with 0 sockets till level 90
+ItemDisplay[(uui OR uea OR ula OR utu OR urs OR utp) NMAG SOCK=2 !ETH CLVL<90]: %NAME% (%SOCKETS% s) // displays light noneth elite armors with 2 sockets till level 90
+ItemDisplay[(uui OR uea OR ula OR utu OR urs OR utp) NMAG SOCK>2 !ETH]: %NAME% (%SOCKETS% s) // displays light noneth elite armors with 3 and 4 sockets
+ItemDisplay[gth NMAG !ETH SOCK=0 ILVL>25 CLVL<60]: %NAME% (%SOCKETS% s) // gothic plate 0/4s - 70str req
+ItemDisplay[gth NMAG !ETH SOCK=4 CLVL<80]: %NAME% (%SOCKETS% s) // gothic plate 4/4s
+ItemDisplay[EQ2 NMAG ELT ETH !SOCK=1]: ETH %NAME% (%SOCKETS% s) // displays eth elite armors unless they are 1-socketed - maybe stick to light armors for merc movespeed though
+ItemDisplay[EQ2 NMAG CLVL>20]: // hide non-magical armors that are not explicitely displayed
+ItemDisplay[EQ2 MAG !ID CLVL>20]: // hide magical unid armors that are not explicitely displayed (none are as they are shit on PoD)
+
+// Shields (EQ3) + Pala Shields (CL3) + Nec Shield (CL4)
+ItemDisplay[NMAG lrg !RW !ETH SOCK=3 CLVL<75]: %NAME% (%SOCKETS% s) // 3s large shield - 3PD/RalOrtTal
+ItemDisplay[NMAG lrg !ETH SOCK=0 CLVL<25]: %NAME% (%SOCKETS% s) // 0/3s large shield - 3PD/RalOrtTal
+ItemDisplay[NMAG bsh !RW !ETH SOCK=2 CLVL<80]: %NAME% (%SOCKETS% s) // 2s bone shield - ShaelEth
+ItemDisplay[NMAG ush !RW !ETH SOCK=3]: %NAME% (%SOCKETS% s) // 3s troll nest (ko ko mal, io jah pul)
+ItemDisplay[NMAG ush !RW ETH SOCK=3]: ETH %NAME% (%SOCKETS% s) // 3s eth troll nest for merc
+ItemDisplay[NMAG uit !RW !ETH SOCK=4]: %NAME% (%SOCKETS% s) // 4 socketed monarch for spirit/phoenix
+ItemDisplay[NMAG uit !RW !ETH SOCK=0 CLVL<90]: %NAME% (%SOCKETS% s) // sockable for spirit/phoenix
+ItemDisplay[uit !ETH MAG !ID]: %NAME% // magic noneth monarch
+ItemDisplay[EQ3 NMAG CLVL>20]: // hide non-magicsl shields that are not explicitely displayed
+ItemDisplay[EQ3 MAG !ID CLVL>20]: // hide magical unid shields that are not explicitely displayed
+
+// Pala Shields (CL3)
+ItemDisplay[CL3 NMAG !RW !ETH (SOCK=0 OR SOCK=3 OR SOCK=4) RES>44]: %NAME% 45@ (%SOCKETS% s) // Endgame Pala Shields
+ItemDisplay[CL3 NMAG !RW ETH  (SOCK=0 OR SOCK=3 OR SOCK=4) RES>44]: ETH %NAME% 45@ (%SOCKETS% s) // Endgame Eth Pala Shields
+ItemDisplay[CL3 NMAG !RW !ETH (SOCK=0 OR SOCK=3 OR SOCK=4) RES>39 CLVL<90]: %NAME% 40+ (%SOCKETS% s) // Endgame Pala Shields
+ItemDisplay[CL3 NMAG !RW ETH  (SOCK=0 OR SOCK=3 OR SOCK=4) RES>39 CLVL<90]: ETH %NAME% 40+ (%SOCKETS% s) // Endgame Eth Pala Shields
+ItemDisplay[pab NMAG !RW ETH RES>34 (SOCK=0 OR SOCK=3 OR SOCK=4)]: ETH %NAME% 35+ (%SOCKETS% s) // Allres Sacred Targe
+ItemDisplay[pab NMAG !RW !ETH RES>34 (SOCK=0 OR SOCK=3 OR SOCK=4)]: %NAME% 35+ (%SOCKETS% s) // Allres Sacred Targe
+ItemDisplay[CL3 NMAG !RW !ETH CLVL<85 RES>35 (!SOCK=1 AND !SOCK=2)]: %NAME% 35+ (%SOCKETS% s) // Late Pala Shields w/ Resistances
+ItemDisplay[CL3 NMAG !RW !ETH CLVL<75 RES>25 (!SOCK=1 AND !SOCK=2)]: %NAME% 25+ (%SOCKETS% s) // Mid Pala Shields w/ Resistances
+ItemDisplay[CL3 NMAG !RW !ETH CLVL<35 RES>10 (!SOCK=1 AND !SOCK=2)]: %NAME% 10+ (%SOCKETS% s) // Early Pala Shields w/ Resistances
+ItemDisplay[pab NMAG !RW ETH ITEMSTAT17>59 (SOCK=0 OR SOCK=3 OR SOCK=4)]: ETH %NAME% 60+ED (%SOCKETS% s) // show high %edamage sacred targe
+ItemDisplay[pab NMAG !RW ITEMSTAT17>59 (SOCK=0 OR SOCK=3 OR SOCK=4)]: %NAME% 60+ED (%SOCKETS% s) // show high %edamage sacred targe
+ItemDisplay[pab MAG !ETH]: %NAME% // show magic sacred targe (best pala shield)
+ItemDisplay[CL3 NMAG CLVL>20]: // hide non-magical pala shields at level 20+
+ItemDisplay[CL3 MAG !ID CLVL>20]: // hide magical unid pala shields at level 20+
+
+// Necro Shields (CL4)
+ItemDisplay[CL4 NMAG !ETH SK80=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Skeleton Mages
+ItemDisplay[CL4 NMAG !ETH SK70=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Skeletons
+ItemDisplay[CL4 NMAG !ETH SK69=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Mastery
+ItemDisplay[CL4 NMAG !ETH SK67=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Teeth
+ItemDisplay[CL4 NMAG !ETH SK83=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Desecrate
+ItemDisplay[CL4 NMAG !ETH SK84=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Bone Spear
+ItemDisplay[CL4 NMAG !ETH SK92=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Poison Nova
+ItemDisplay[CL4 MAG !ETH]: %NAME% // shows noneth magic nec shields - could be +6ss
+ItemDisplay[CL4 MAG ETH CLVL>30]: // hide eth magic nec shields on level 30+
+ItemDisplay[CL4 NMAG CLVL>30]: nec shield ignore // hide all non-specified nec shields on level 30+ //TEMPIGNORE
+
+// Weapons (WEAPON) + Assa Claws (CL5) + Sorc Orbs (CL6) + Ama Javelins & Spears (CL7)
+// Axes (WP1), Maces (WP2), Swords (WP3), Daggers (WP4), Throwing Weapons (WP5), Javelins (WP6), Spears (WP7), Polearms (WP8), Bows (WP9), Crossbows (WP10), Staves (WP11), Wands (WP12), Sceptres (WP13)
+
+// Assa Claw Bases (CL5) - adapted from darkgale - shows good sockables
+// SK274 - Blades of Ice; SK275 - Dragon Flight; SK277 - Blade Shield; SK278 - Venom;
+ItemDisplay[CL5 SK261=3 !ETH (SOCK=0 OR SOCK=3)]: %NAME% (%SOCKETS% s) %RED%Charged Bolt Sentry
+ItemDisplay[CL5 SK262=3 !ETH (SOCK=0 OR SOCK=3)]: %NAME% (%SOCKETS% s) %RED%Wake of Fire Sentry
+ItemDisplay[CL5 SK271=3 !ETH (SOCK=0 OR SOCK=3)]: %NAME% (%SOCKETS% s) %RED%Lightning Sentry
+ItemDisplay[CL5 SK272=3 !ETH (SOCK=0 OR SOCK=3)]: %NAME% (%SOCKETS% s) %RED%Inferno Sentry
+ItemDisplay[(7ar OR 7qr OR 7tw) NMAG !ETH (SK274>0 AND SK275>0) (SOCK=0 OR SOCK=3)]: %NAME% (%SOCKETS% s) %RED%BoI + Dragon Flight
+ItemDisplay[(7ar OR 7qr OR 7tw) NMAG !ETH SK278=3 (SOCK=0 OR SOCK=3)]: %NAME% (%SOCKETS% s) %RED%Venom
+ItemDisplay[(7ar OR 7qr OR 7tw) NMAG !ETH SK277=3 (SOCK=0 OR SOCK=3)]: %NAME% (%SOCKETS% s) %RED%Blade Shield
+ItemDisplay[CL5 MAG !ID]: // hide unid magic claws - magic claws should be shopped anyway
+ItemDisplay[CL5 NMAG]: claw ignore // hide non-magical claws that are not explicitely displayed //TEMPIGNORE
+
+// Sorc Orbs (CL6) - adapted from darkgale
+ItemDisplay[(obf OR oba OR ob5) NMAG (SOCK=0 OR SOCK=3) ETH (SK62=3 OR SK59=3 OR SK64=3 OR SK48=3)]: ETH %NAME% (%SOCKETS% s) // ETH Sorc Orb Plague Base
+ItemDisplay[(obf OR oba OR ob5) NMAG (SOCK=0 OR SOCK=3) !ETH (SK62=3 OR SK59=3 OR SK64=3 OR SK48=3)]: %NAME% (%SOCKETS% s) // Sorc Orb Plague Base
+ItemDisplay[CL6 MAG !ID]: %NAME% // magic orbs, +6 ones can surely be nice
+ItemDisplay[CL6 NMAG]: $ %NAME% - %PRICE%g // gold generation
+
+//Amazon Javelins, Spears and Bows (CL7)
+ItemDisplay[MAG (am5 OR ama OR amf) !ID CLVL<90]: %NAME% // ama javelin, magic (pre-titans)
+ItemDisplay[(am5 OR ama OR amf) !ID CLVL<75]: %NAME% // ama javelin, white (imbue, early ladder)
+ItemDisplay[ame ETH NMAG TABSK2=3 (SOCK=0 OR SOCK=6)]: ETH %NAME% (%SOCKETS% s) // Ama BotD Sockable
+ItemDisplay[amd ETH NMAG TABSK2=3 (SOCK=0 OR SOCK=6)]: ETH %NAME% (%SOCKETS% s) // Ama BotD Sockable
+ItemDisplay[amc (SOCK=0 OR SOCK=3 OR SOCK=4) NMAG TABSK0=3]: %NAME% (%SOCKETS% s) // show Grand Matron Bow 0s, 3s or 4s +3
+ItemDisplay[amb (SOCK=0 OR SOCK=3 OR SOCK=4) NMAG TABSK0=3]: %NAME% (%SOCKETS% s) // show Matriarchal Bow 0s, 3s or 4s +3
+ItemDisplay[(am1 or am2 OR am6 OR am7 OR amb OR amc) NMAG (SOCK=0 OR SOCK=3 OR SOCK=4) TABSK0>1 CLVL<80]: %NAME% (%SOCKETS% s) // early ama bows
+ItemDisplay[CL7 NMAG]: // hides all non-specified non-magical amazon only weapons
+ItemDisplay[CL7 MAG]: // hides all non-specified magical amazon only weapons
+
+// Axes (WP1)
+ItemDisplay[7wa NMAG !ETH SOCK>3]: %NAME% (%SOCKETS% s) // 4, 5, 6 socket BA, noneth
+ItemDisplay[7wa NMAG ETH (SOCK=0 OR SOCK>3)]: ETH %NAME% (%SOCKETS% s) // 0, 4, 5, 6s oath/death/BotD BA Sockable
+ItemDisplay[WP1 NMAG CLVL>20]: // hide non-magical axes at level 20+ unless explicitely shown
+ItemDisplay[WP1 MAG !ID CLVL>20]: // hide magic unid axes at level 20+
+
+// Maces (WP2)
+ItemDisplay[7gm ETH NMAG SOCK=6]: ETH %NAME% (%SOCKETS% s) // 6s eth thunder maul, botd base
+ItemDisplay[fla ETH SOCK>3 NMAG]: ETH %NAME% (%SOCKETS% s) // eth 4 & 5s flail for HotO / CTA
+ItemDisplay[fla SOCK>3 NMAG]: %NAME% (%SOCKETS% s) // 4 & 5s flail for HotO / CTA
+ItemDisplay[7fl ETH SOCK=4 NMAG]: ETH %NAME% (%SOCKETS% s) // 4s scourge for oath
+ItemDisplay[WP2 NMAG CLVL>20]: // hide non-magical maces at level 20+ unless explicitely shown
+ItemDisplay[WP2 MAG !ID CLVL>20]: // hide magic unid maces at level 20+
+
+// Swords (WP3)
+ItemDisplay[NMAG ETH crs (ILVL>24 AND ILVL<41) SOCK=0]: ETH %NAME% (%SOCKETS% s) // eth 0/4s spirit crystal sword base
+ItemDisplay[NMAG ETH bsd SOCK=0 CLVL<75]: ETH %NAME% (%SOCKETS% s) // eth 0/4s spirit broad sword base
+ItemDisplay[NMAG ETH !RW (crs OR bsd) SOCK=4]: ETH %NAME% (%SOCKETS% s) // eth 4s spirit base
+ItemDisplay[NMAG !ETH crs (ILVL>24 AND ILVL<41) SOCK=0]: %NAME% (%SOCKETS% s) // 0/4s spirit crystal sword base
+ItemDisplay[NMAG !ETH bsd SOCK=0 CLVL<75]: %NAME% (%SOCKETS% s) // 0/4s spirit broad sword base
+ItemDisplay[NMAG !ETH (crs OR bsd) SOCK=4]: %NAME% (%SOCKETS% s) // 4s spirit base
+ItemDisplay[7cr NMAG SOCK>2]: %NAME% (%SOCKETS% s) // 3, 4, 5, 6s PB (lawbringer, passion, grief, lw/silence sockable
+ItemDisplay[(7gd OR 7fb) ETH (SOCK=0 OR SOCK>3) NMAG]: ETH %NAME% (%SOCKETS% s) // eth Colossal Sword & Colossus Blade (0, 4, 5, 6s bases)
+ItemDisplay[(7ls OR 72h) ETH NMAG (SOCK=0 OR SOCK=3)]: ETH %NAME% (%SOCKETS% s) // eth mythical sword OR legend sword; 0s & 3s - fast lawbringer merc base
+ItemDisplay[crs ETH SOCK=5 NMAG]: ETH %NAME% (%SOCKETS% s) // 5s eth CS for CTA
+ItemDisplay[crs SOCK=5 NMAG]: %NAME% (%SOCKETS% s) // 5s CS for CTA
+ItemDisplay[WP3 NMAG CLVL>20]: // hide non-magical swords at level 20+ unless explicitely shown
+ItemDisplay[WP3 MAG !ID CLVL>20]: // hide magic unid swords at level 20+
+
+// Daggers (WP4)
+ItemDisplay[WP4 (NMAG OR MAG) CLVL>20]: // hide any magical or non-magical daggers at level 20+
+
+// Throwing Weapons (WP5)
+ItemDisplay[WP5 (NMAG OR MAG) CLVL>20]: // hide any magical or non-magical throwing weapons at level 20+
+
+// Javelins (WP6)
+ItemDisplay[WP6 (NMAG OR MAG) CLVL>20]: // hide any magical or non-magical javelins at level 20+, bo spears are to be shopped anyway
+
+// Spears (WP7) - only BOTD base should be usable
+ItemDisplay[7p7 ETH (SOCK=0 OR SOCK=6)]: ETH %NAME% (%SOCKETS% s) // BotD base, War Pike
+ItemDisplay[WP7 MAG !ID CLVL>20]: // hide all magic spears at level 20+
+ItemDisplay[WP7 NMAG CLVL>20]: // hide all non-magical spears at level 20+
+
+// Polearms (WP8)
+ItemDisplay[WP8 ETH NMAG SOCK=4 CLVL<85]: ETH %NAME% (%SOCKETS% s) // early eth insight base
+ItemDisplay[WP8 NMAG SOCK=4 CLVL<85]: %NAME% (%SOCKETS% s) // early insight base
+ItemDisplay[WP8 ELT !ETH SOCK=4 CLVL<92]: %NAME% (%SOCKETS% s) // kinda late noneth elite insight base
+ItemDisplay[WP8 ELT ETH SOCK>3]: ETH %NAME% (%SOCKETS% s) // eth Elite Polearms: Insight, Infinity, Obedience, BotD Bases
+ItemDisplay[(7vo OR 7s8 OR 7pa OR 7h7 OR 7wc) ETH SOCK=0 NMAG]: ETH %NAME% // eth unsocketed elite polearms (that can get 4+ sockets) (colossus voulge 4, thresher 5, cryptic axe 5, great poleaxe 6, giant thresher 6)
+ItemDisplay[WP8 MAG !ID]: // hide magical polearms
+ItemDisplay[WP8 NMAG]: // hide non-magical polearms unless explicitely shown above
+
+// Bows (WP9)
+ItemDisplay[WP9 MAG !ID CLVL>20]: // hide all magic bows
+ItemDisplay[(6hb OR 6cb) NMAG SOCK=4]: %NAME% (%SOCKETS% s) // show fastest elite faith/harmony bases - blade and great bow
+ItemDisplay[WP9 NMAG CLVL>20]: // hide all non-magical bows, edge (for shopping; base shoppable)
+
+// Crossbows (WP10)
+ItemDisplay[WP10 (NMAG OR MAG) CLVL>20]: // hide any magical or non-magical crossbows at level 20+
+
+// Staves (WP11) // TODO: eth insight bases for stun druid
+ItemDisplay[NMAG (cst OR bst OR 8cs OR 8bs OR 6cs OR 6bs) !RW SOCK=0 SK58=3]: %NAME% %RED%Energy Shield // 9 ES Memory Base, unsocketed
+ItemDisplay[NMAG WP11 !RW SOCK=4 SK58=3]: %NAME% (%SOCKETS% s) %RED%Energy Shield // 9 ES Memory Base, socketed
+ItemDisplay[WP11 NMAG SOCK=5 SK58=3 SK57>0]: %NAME% (%SOCKETS% s) %RED%Energy Shield+ // cta base with 3 es + thunder storm
+ItemDisplay[WP11 NMAG SOCK=5 SK58=3 SK50>0]: %NAME% (%SOCKETS% s) %RED%Energy Shield+ // cta base with 3 es + shiver armor
+ItemDisplay[WP11 NMAG SOCK=5 SK58=3]: %NAME% (%SOCKETS% s) // cta base with 3 es
+ItemDisplay[(sst OR 8ss OR 6ss) NMAG]: $ %NAME% - %PRICE%g // 1x3 staves that might sell for gold
+ItemDisplay[6ws NMAG ETH (SOCK=0 OR SOCK=6)]: ETH %NAME% (%SOCKETS% s) // 0 + 6os ETH Archon Staff = BoTD = Breath of the Dying
+ItemDisplay[WP11 MAG !ID CLVL>20]: // hide magic staves, they should be inferior to magic orbs anyway at level 20+
+ItemDisplay[WP11 NMAG CLVL>20]: staff ignore // hide non-magical staves that are not explicitely shown at level 20+ //TEMPIGNORE
+
+// Wands (WP12)
+// 2-Sockable Wands: Bone Wand, Grim Wand, Petrified Wand, Tomb Wand, Grave Wand, Polished Wand, Ghost Wand, Lich Wand, Unearthed Wand = (bwn OR gwn OR 9yw OR 9bw OR 9gw OR 7wn OR 7yn OR 7bw OR 7gw)
+ItemDisplay[(bwn OR gwn OR 9yw OR 9bw OR 9gw OR 7wn OR 7yn OR 7bw OR 7gw) NMAG SK84=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Bone Spear
+ItemDisplay[(bwn OR gwn OR 9yw OR 9bw OR 9gw OR 7wn OR 7yn OR 7bw OR 7gw) NMAG SK83=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Desecrate
+ItemDisplay[(bwn OR gwn OR 9yw OR 9bw OR 9gw OR 7wn OR 7yn OR 7bw OR 7gw) NMAG SK92=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Poison Nova
+ItemDisplay[(bwn OR gwn OR 9yw OR 9bw OR 9gw OR 7wn OR 7yn OR 7bw OR 7gw) NMAG SK67=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Teeth
+ItemDisplay[(bwn OR gwn OR 9yw OR 9bw OR 9gw OR 7wn OR 7yn OR 7bw OR 7gw) NMAG SK80=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Skeleton Mage
+ItemDisplay[(bwn OR gwn OR 9yw OR 9bw OR 9gw OR 7wn OR 7yn OR 7bw OR 7gw) NMAG SK70=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Skeletons
+ItemDisplay[(bwn OR gwn OR 9yw OR 9bw OR 9gw OR 7wn OR 7yn OR 7bw OR 7gw) NMAG SK69=3 !SOCK=1]: %NAME% (%SOCKETS% s) %RED%Mastery
+ItemDisplay[WP12 MAG !ID CLVL>20]: // magic wands are shoppable
+ItemDisplay[WP12 NMAG]: $ %NAME% - %PRICE%g // gold generation
+
+// Scepters (WP13)
+ItemDisplay[WP13 SK117>0]: #### %NAME% #### %RED%HS // show holy shield scepters, won't drop anyway
+ItemDisplay[wsp NMAG (SOCK=4 OR SOCK=5)]: %NAME% (%SOCKETS% s) // show holy thunder/cta base war sceptre
+ItemDisplay[7ws NMAG (SOCK=0 OR SOCK=4 OR SOCK=5)]: %NAME% (%SOCKETS% s) // caduceus as cta/hoj/... base
+ItemDisplay[7ws NMAG SOCK=4 SK118=3]: %NAME% (%SOCKETS% s) %RED%Holy Shock // Hand of Justice
+ItemDisplay[WP13 MAG !ID CLVL>20]: // hide magic sceptres - they are shoppable
+ItemDisplay[(scp OR gsc OR 9sc OR 9qs OR 7sc OR 7qs) NMAG]: $ %NAME% - %PRICE%g // gold generation
+ItemDisplay[WP13 NMAG CLVL>20]: scepter ignore // hide non-magical scepters that are not good sockables or good for gold at level 20+ //TEMPIGNORE
+
+
+// Testing - shows item codes for everything not caught previously - comment out while not actually testing
+//ItemDisplay[]: %NAME% [%CODE%]
+
+//Catchall -- after level 20-30-40ish nothing with a "-"-mark should be dropping anymore
+ItemDisplay[ETH SOCK>0]: ETH %NAME% (%SOCKETS% s) -
+ItemDisplay[ETH SOCK=0]: ETH %NAME% -
+ItemDisplay[SOCK>0]: %NAME% (%SOCKETS% s) -
+ItemDisplay[SOCK=0]: %NAME% -
+//ItemDisplay[]: // this hides everything - well not this far down in the filter, but still...
