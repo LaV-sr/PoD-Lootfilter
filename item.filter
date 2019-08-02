@@ -59,7 +59,6 @@ ItemDisplay[std]: %NAME% // Standard of Heroes (Full-Set Glow-Effect)
 ItemDisplay[cx5]: %PURPLE%%NAME% // Orb of Corruption
 ItemDisplay[cx6]: %PURPLE%%NAME% // (Diablo's Soulstone (Uber Diablo) - Drops from UT-Diablo
 ItemDisplay[cx7]: %RED%### %PURPLE%%NAME%%RED% ### // Key of Chaos (Uber Diablo) - Drops in Relics(Maps)
-ItemDisplay[cx8]: %RED% # %PURPLE%%NAME%%RED% # // Orb of Enchantment
 ItemDisplay[ma1]: %PURPLE%%NAME% // not in as of patch#15, removed in patch#12
 ItemDisplay[ma2]: %PURPLE%%NAME% %RED%[T4] // Tier 4 Relic
 ItemDisplay[ma3]: %PURPLE%%NAME% // not in as of patch#15, removed in patch#12
@@ -67,7 +66,9 @@ ItemDisplay[ma4]: %PURPLE%%NAME% %RED%[T1] // Tier 1 Relic
 ItemDisplay[ma5]: %PURPLE%%NAME% %RED%[T2] // Tier 2 Relic
 ItemDisplay[ma6]: %PURPLE%%NAME% %RED%[T3] // Tier 3 Relic
 ItemDisplay[maz]: %PURPLE%%NAME% // not in as of patch#15
-ItemDisplay[cm4]: %PURPLE%%NAME% // Hoardrim Sigil (Enchant Charm)
+
+ItemDisplay[cx8]: %RED% # %PURPLE%%NAME%%RED% # // Orb of Enchantment, removed in patch#17
+ItemDisplay[cm4]: %PURPLE%%NAME% // Hoardrim Sigil (Enchant Charm), removed in patch#17
 
 // Utility Items
 ItemDisplay[tbk]: %WHITE%Tome of Town Portal // TP Tome
